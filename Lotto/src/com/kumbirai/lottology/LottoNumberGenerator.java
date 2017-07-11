@@ -8,6 +8,8 @@
 package com.kumbirai.lottology;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
@@ -56,12 +58,18 @@ public class LottoNumberGenerator
 	 */
 	public void generateWeightedGameNumbers(SortedMap<Integer, List<Integer>> resultsMap, Game game)
 	{
+		List<Integer> allNumbers = new ArrayList<>();
+		for (int i = 1; i <= game.getColumns(); i++)
+		{
+			allNumbers.addAll(resultsMap.get(Integer.valueOf(i)));
+			Collections.shuffle(allNumbers);
+		}
 		for (int i = 1; i <= 750; i++)
 		{
 			Set<Integer> rowNumbers = new TreeSet<>();
 			while (rowNumbers.size() < game.getColumns())
 			{
-				rowNumbers.add(getWeightedRandomNumber(resultsMap.get(Integer.valueOf(rowNumbers.size() + 1))));
+				rowNumbers.add(getWeightedRandomNumber(allNumbers));
 			}
 			String line;
 			switch (game)
