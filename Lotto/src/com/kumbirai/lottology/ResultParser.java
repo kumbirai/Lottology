@@ -67,7 +67,7 @@ public class ResultParser
 		try (Workbook wb = new XSSFWorkbook(inputFile))
 		{
 			Sheet sheet = wb.getSheetAt(0);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy");
 			for (Row row : sheet)
 			{
 				for (Cell cell : row)
