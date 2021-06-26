@@ -7,9 +7,13 @@
     <name>lottology</name>
     <description>Random Lotto number Generator</description>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <junit.jupiter.version>5.7.1</junit.jupiter.version>
+        <maven.maven-compiler-plugin.version>3.8.1</maven.maven-compiler-plugin.version>
         <maven.maven-surefire-plugin.version>3.0.0-M4</maven.maven-surefire-plugin.version>
+        <maven.maven-source-plugin.version>3.2.1</maven.maven-source-plugin.version>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
     </properties>
     <dependencies><!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
@@ -27,11 +31,24 @@
             <artifactId>common</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build><!--<sourceDirectory>src</sourceDirectory>-->
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -44,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>${maven.maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
